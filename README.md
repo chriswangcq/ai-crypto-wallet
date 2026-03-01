@@ -12,7 +12,6 @@
 
 🌐 **English** | [中文](#中文文档) | [Roadmap](#roadmap)
 
----
 
 ## 🚀 One Interface, Multiple Chains
 
@@ -31,7 +30,6 @@ await wallet.execute({
 })
 ```
 
----
 
 ## ✨ Features
 
@@ -54,7 +52,6 @@ await wallet.execute({
 - Encrypted key storage
 - Transaction signing without exposing private keys
 
----
 
 ## 📦 Quick Start
 
@@ -131,7 +128,6 @@ tx_hash = wallet.send_spl_token(
 )
 ```
 
----
 
 ## 🎯 AI Agent Integration
 
@@ -182,7 +178,6 @@ COMMANDS = {
 }
 ```
 
----
 
 ## 🏗️ Architecture
 
@@ -203,7 +198,6 @@ COMMANDS = {
 
 **Design Philosophy**: One unified interface, multiple chains.
 
----
 
 ## 🔒 Security
 
@@ -212,7 +206,6 @@ COMMANDS = {
 - ✅ **Encrypted storage**: Private keys encrypted at rest
 - ⚠️ **Production**: Use HSM or MPC for production deployments
 
----
 
 ## 🌟 Why This Project?
 
@@ -228,7 +221,6 @@ Our vision:
 - ✅ AI becomes independent economic entities
 - ✅ AI participates equally in the global economy
 
----
 
 ## 🚧 Roadmap
 
@@ -256,7 +248,6 @@ Our vision:
 - [ ] Enterprise key management
 - [ ] Insurance integration
 
----
 
 ## 📊 Growth & Promotion
 
@@ -267,7 +258,6 @@ We're building this in public! Follow our journey:
 - 🐦 **Twitter**: [@AI_Crypto_Wallet](https://twitter.com/)
 - 💬 **Discord**: [Coming Soon]
 
----
 
 ## 🤝 Contribute
 
@@ -278,54 +268,14 @@ Join us in building the economic infrastructure for AI agents!
 - 🎨 **Designers**: Make tools more accessible
 - 📢 **Evangelists**: Spread the word
 
----
 
 ## 📜 License
 
 MIT License — Build the future of AI economics together.
 
----
 
 <p align="center">
   <b>🚀 Give AI a wallet. Change the world. 🚀</b>
 </p>
 
----
 
-# 中文文档
-
-## 简介
-
-**AI Crypto Wallet** 是专为 AI Agent 设计的多链加密货币钱包。
-
-让 AI 拥有真正的经济自主权——发送、接收和管理加密资产。
-
-### 支持的区块链
-- ✅ **比特币** (BTC) — Testnet3 / 主网
-- ✅ **以太坊** (ETH, ERC-20) — Sepolia / 主网  
-- ✅ **Solana** (SOL, SPL) — Devnet / 主网
-- 🚧 **TRON** (TRX) — 开发中
-
-### 核心特性
-- **AI 原生设计** — JSON API，无需 GUI
-- **自托管** — AI 自主掌控私钥
-- **多链统一接口** — 一条命令，多条链通用
-- **测试网优先** — 安全实验，默认使用测试网
-
-### 快速开始
-
-```python
-from ai_wallet import AICryptoWallet
-
-wallet = AICryptoWallet()
-
-# AI 可以控制 BTC、ETH、SOL
-result = await wallet.execute({
-    "action": "send",
-    "chain": "solana",
-    "to": "接收地址",
-    "amount": 0.1
-})
-```
-
-了解更多：[查看完整文档](https://github.com/chriswangcq/ai-crypto-wallet)

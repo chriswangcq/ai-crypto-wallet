@@ -39,7 +39,16 @@ pip install -r requirements.txt
 
 ### AI Agent Usage
 
-```python
+# BTC
+wallet = AICryptoWallet("bitcoin", network="testnet")
+
+# ETH
+wallet = AICryptoWallet("ethereum", network="sepolia")
+
+# SOL
+wallet = AICryptoWallet("solana", network="devnet")
+
+# TRX
 from ai_wallet import Wallet
 
 # Create multi-chain wallet for your AI agent
@@ -69,7 +78,16 @@ btc.send(
 
 ### LLM Function Calling Integration
 
-```python
+# BTC
+wallet = AICryptoWallet("bitcoin", network="testnet")
+
+# ETH
+wallet = AICryptoWallet("ethereum", network="sepolia")
+
+# SOL
+wallet = AICryptoWallet("solana", network="devnet")
+
+# TRX
 # Let GPT-4/Claude directly control the wallet
 
 tools = [{

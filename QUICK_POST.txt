@@ -1,0 +1,27 @@
+📋 复制粘贴即用 - Reddit r/LocalLLaMA 帖子
+
+标题：
+Built a crypto wallet for AI Agents - Give your LLM true economic autonomy
+
+正文：
+Hey LocalLLaMA community!
+
+I've been thinking about what AI agents really need to become independent economic entities. The answer seems obvious: they need wallets.
+
+So I built AI Crypto Wallet - a universal crypto wallet designed specifically for AI agents.
+
+What it does:
+• Gives your AI agents Bitcoin, Ethereum, Solana, TRON wallets  
+• Unified JSON API - no GUI, just programmatic control
+• Self-custody - AI holds keys locally
+• Testnet-first for safe experimentation
+
+Why this matters:
+Right now, AI agents depend on humans for payments. They can't participate in the economy autonomously. This changes that.
+
+GitHub: https://github.com/chriswangcq/ai-crypto-wallet
+
+Would love your thoughts! What other financial tools do AI agents need?
+
+---
+🚀 发帖链接: https://www.reddit.com/r/LocalLLaMA/submit

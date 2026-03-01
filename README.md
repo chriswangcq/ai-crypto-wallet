@@ -2,32 +2,61 @@
 
 > **The Universal Crypto Wallet for AI Agents**
 > 
-> Give your AI agents true economic autonomy — send, receive, and manage crypto assets across multiple chains
+> Give your AI agents true economic autonomy — send, receive, and manage crypto assets across Bitcoin, Ethereum, and Solana
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Bitcoin](https://img.shields.io/badge/Bitcoin-supported-orange.svg)](https://bitcoin.org)
 [![Ethereum](https://img.shields.io/badge/Ethereum-supported-blue.svg)](https://ethereum.org)
 [![Solana](https://img.shields.io/badge/Solana-supported-purple.svg)](https://solana.com)
-[![TRON](https://img.shields.io/badge/TRON-supported-red.svg)](https://tron.network)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
----
-
-## ✨ One-Liner
-
-```
-AI Agent + Multi-Chain Crypto = Truly Autonomous Economic Entity
-```
-
-This wallet empowers AI agents to:
-- 🏦 **Self-custody** crypto assets across Bitcoin, Ethereum, Solana, TRON
-- 💸 **Autonomously send/receive** payments without human approval
-- 🔗 **Interact with DeFi** protocols and smart contracts
-- ⚡ **Settle globally** in minutes, 24/7
+🌐 **English** | [中文](#中文文档) | [Roadmap](#roadmap)
 
 ---
 
-## 🚀 Quick Start (5 Minutes)
+## 🚀 One Interface, Multiple Chains
+
+```python
+from ai_wallet import AICryptoWallet
+
+# Initialize the universal wallet
+wallet = AICryptoWallet()
+
+# AI can control BTC, ETH, SOL with the same simple interface
+await wallet.execute({
+    "action": "send",
+    "chain": "solana",  # or "bitcoin", "ethereum"
+    "to": "recipient_address",
+    "amount": 0.1
+})
+```
+
+---
+
+## ✨ Features
+
+### 🔗 Multi-Chain Support
+| Chain | Status | Assets | Network |
+|-------|--------|--------|---------|
+| **Bitcoin** | ✅ Live | BTC | Testnet3 / Mainnet |
+| **Ethereum** | ✅ Live | ETH, ERC-20 | Sepolia / Mainnet |
+| **Solana** | ✅ Live | SOL, SPL tokens | Devnet / Mainnet |
+| **TRON** | 🚧 Coming | TRX, TRC-20 | Nile / Mainnet |
+
+### 🤖 AI-Native Design
+- **JSON API** — No GUI, just programmatic control
+- **Natural Language** — "Send 0.1 ETH to..."
+- **Self-Custody** — AI holds keys, no human approval needed
+- **Multi-Agent** — Supports agent-to-agent payments
+
+### 🔐 Security First
+- Testnet defaults for safe experimentation
+- Encrypted key storage
+- Transaction signing without exposing private keys
+
+---
+
+## 📦 Quick Start
 
 ### Installation
 
@@ -37,119 +66,121 @@ cd ai-crypto-wallet
 pip install -r requirements.txt
 ```
 
-### AI Agent Usage
+### 1️⃣ Bitcoin Wallet
 
-# BTC
-wallet = AICryptoWallet("bitcoin", network="testnet")
+```python
+from ai_wallet.chains.bitcoin import BitcoinWallet
 
-# ETH
-wallet = AICryptoWallet("ethereum", network="sepolia")
+# Create or load wallet
+wallet = BitcoinWallet(network='testnet')  # or 'mainnet'
+wallet.create_wallet("my_ai_wallet")
 
-# SOL
-wallet = AICryptoWallet("solana", network="devnet")
+# Check balance
+balance = wallet.get_balance()
+print(f"Balance: {balance} BTC")
 
-# TRX
-from ai_wallet import Wallet
+# Send Bitcoin
+tx_hash = wallet.send(
+    to_address="tb1q...",
+    amount_btc=0.001
+)
+print(f"Transaction: {tx_hash}")
+```
 
-# Create multi-chain wallet for your AI agent
-wallet = Wallet()
+### 2️⃣ Ethereum Wallet
 
-# Bitcoin (Testnet)
-btc = wallet.bitcoin(testnet=True)
-btc.create()
-print(f"BTC Address: {btc.address}")
+```python
+from ai_wallet.chains.ethereum import EthereumWallet
 
-# Ethereum (Sepolia Testnet)
-eth = wallet.ethereum(network="sepolia")
-eth.create()
-print(f"ETH Address: {eth.address}")
+wallet = EthereumWallet(network='sepolia')  # or 'mainnet'
+wallet.create_wallet("my_eth_wallet")
 
-# Check balances
-btc_balance = btc.get_balance()
-eth_balance = eth.get_balance()
-print(f"BTC: {btc_balance} | ETH: {eth_balance}")
+# Send ETH
+tx_hash = wallet.send(
+    to_address="0x...",
+    amount_eth=0.1
+)
 
-# Autonomous payment
-btc.send(
-    to_address="mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB",
-    amount=0.001
+# Send ERC-20 tokens
+tx_hash = wallet.send_token(
+    token_address="0x...",
+    to_address="0x...",
+    amount=100
 )
 ```
 
-### LLM Function Calling Integration
+### 3️⃣ Solana Wallet
 
-# BTC
-wallet = AICryptoWallet("bitcoin", network="testnet")
+```python
+from ai_wallet.chains.solana import SolanaWallet
 
-# ETH
-wallet = AICryptoWallet("ethereum", network="sepolia")
+wallet = SolanaWallet(network='devnet')  # or 'mainnet'
+wallet.create_wallet()
 
-# SOL
-wallet = AICryptoWallet("solana", network="devnet")
+# Send SOL
+tx_hash = wallet.send_sol(
+    to_address="HN7c...",
+    amount_sol=0.1
+)
 
-# TRX
-# Let GPT-4/Claude directly control the wallet
+# Send SPL tokens
+tx_hash = wallet.send_spl_token(
+    mint_address="EPjF...",  # USDC mint
+    to_address="HN7c...",
+    amount=10
+)
+```
 
-tools = [{
-    "type": "function",
-    "function": {
-        "name": "crypto_wallet",
-        "description": "Manage crypto assets across Bitcoin, Ethereum, Solana, TRON",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "chain": {"enum": ["bitcoin", "ethereum", "solana", "tron"]},
-                "action": {"enum": ["get_balance", "send", "create_address"]},
-                "to_address": {"type": "string"},
-                "amount": {"type": "number"}
-            },
-            "required": ["chain", "action"]
-        }
+---
+
+## 🎯 AI Agent Integration
+
+### For LangChain Agents
+
+```python
+from langchain.tools import tool
+from ai_wallet import AICryptoWallet
+
+wallet = AICryptoWallet()
+
+@tool
+def send_crypto(chain: str, to: str, amount: float) -> str:
+    """Send cryptocurrency to an address"""
+    result = wallet.execute({
+        "action": "send",
+        "chain": chain,
+        "to": to,
+        "amount": amount
+    })
+    return f"Transaction sent: {result['tx_hash']}"
+
+@tool  
+def check_balance(chain: str) -> str:
+    """Check wallet balance"""
+    result = wallet.execute({
+        "action": "balance",
+        "chain": chain
+    })
+    return f"Balance: {result['balance']}"
+
+# Agent can now use crypto autonomously
+```
+
+### For AutoGPT
+
+```python
+# In your AI's command registry
+COMMANDS = {
+    "crypto_send": {
+        "function": wallet.send,
+        "description": "Send crypto to an address"
+    },
+    "crypto_balance": {
+        "function": wallet.get_balance,
+        "description": "Check wallet balance"
     }
-}]
-
-# LLM decides → calls wallet → auto-executes
+}
 ```
-
----
-
-## 🎯 Supported Chains
-
-| Chain | Status | Features | Testnet |
-|-------|--------|----------|---------|
-| ₿ **Bitcoin** | ✅ Ready | P2PKH, Bech32 | Testnet3 |
-| ♦ **Ethereum** | ✅ Ready | ETH, ERC-20 | Sepolia |
-| ⚡ **Solana** | 🚧 In Progress | SOL, SPL | Devnet |
-| 🔴 **TRON** | 🚧 In Progress | TRX, TRC-20 | Nile |
-
----
-
-## 💡 Use Cases
-
-### 1. AI-as-a-Service (AIaaS)
-```
-User → Pay 0.001 ETH → AI Agent → Deliver Analysis
-```
-AI autonomously receives payments, no human finance team needed.
-
-### 2. AI-to-AI Economy
-```
-AI Agent A ──0.05 ETH──→ AI Agent B
-          ←──Service────
-```
-AI agents trade directly, automatic settlement.
-
-### 3. Cross-Chain AI Arbitrage
-```
-AI monitors prices → Detects arbitrage → Executes trades → Profits
-```
-AI manages liquidity across chains for optimal yields.
-
-### 4. Autonomous AI DAO Members
-```
-AI completes work → Auto-receives payment → Auto-votes on proposals
-```
-AI participates in DAO governance as first-class citizens.
 
 ---
 
@@ -201,20 +232,20 @@ Our vision:
 
 ## 🚧 Roadmap
 
-### Phase 1: Core Chains (Current)
-- [x] Bitcoin support
-- [x] Ethereum support  
-- [ ] Solana support (WIP)
-- [ ] TRON support (WIP)
+### Phase 1: Core Chains ✅ COMPLETE
+- [x] Bitcoin support (BTC)
+- [x] Ethereum support (ETH, ERC-20)
+- [x] Solana support (SOL, SPL tokens)
+- [ ] TRON support (TRX, TRC-20)
 
 ### Phase 2: Advanced Features
 - [ ] Multi-sig wallets for AI committees
-- [ ] DeFi integrations (Uniswap, Aave)
-- [ ] NFT support
+- [ ] DeFi integrations (Uniswap, Aave, Jupiter)
+- [ ] NFT support (ERC-721, Metaplex)
 - [ ] Lightning Network
 
 ### Phase 3: AI Framework Integration
-- [ ] LangChain integration
+- [ ] LangChain official integration
 - [ ] AutoGPT plugin
 - [ ] CrewAI support
 - [ ] ElizaOS connector
@@ -227,6 +258,17 @@ Our vision:
 
 ---
 
+## 📊 Growth & Promotion
+
+We're building this in public! Follow our journey:
+
+- 📰 **Updates**: Check [GROWTH_STRATEGY.md](GROWTH_STRATEGY.md)
+- 📢 **Ready-to-use content**: [PROMOTION_CONTENT.md](PROMOTION_CONTENT.md)
+- 🐦 **Twitter**: [@AI_Crypto_Wallet](https://twitter.com/)
+- 💬 **Discord**: [Coming Soon]
+
+---
+
 ## 🤝 Contribute
 
 Join us in building the economic infrastructure for AI agents!
@@ -235,9 +277,6 @@ Join us in building the economic infrastructure for AI agents!
 - 🧠 **AI Researchers**: Explore AI economic behaviors
 - 🎨 **Designers**: Make tools more accessible
 - 📢 **Evangelists**: Spread the word
-
-**Discord**: [Coming Soon]
-**Twitter**: [@AI_Crypto_Wallet](https://twitter.com/)
 
 ---
 
@@ -250,3 +289,43 @@ MIT License — Build the future of AI economics together.
 <p align="center">
   <b>🚀 Give AI a wallet. Change the world. 🚀</b>
 </p>
+
+---
+
+# 中文文档
+
+## 简介
+
+**AI Crypto Wallet** 是专为 AI Agent 设计的多链加密货币钱包。
+
+让 AI 拥有真正的经济自主权——发送、接收和管理加密资产。
+
+### 支持的区块链
+- ✅ **比特币** (BTC) — Testnet3 / 主网
+- ✅ **以太坊** (ETH, ERC-20) — Sepolia / 主网  
+- ✅ **Solana** (SOL, SPL) — Devnet / 主网
+- 🚧 **TRON** (TRX) — 开发中
+
+### 核心特性
+- **AI 原生设计** — JSON API，无需 GUI
+- **自托管** — AI 自主掌控私钥
+- **多链统一接口** — 一条命令，多条链通用
+- **测试网优先** — 安全实验，默认使用测试网
+
+### 快速开始
+
+```python
+from ai_wallet import AICryptoWallet
+
+wallet = AICryptoWallet()
+
+# AI 可以控制 BTC、ETH、SOL
+result = await wallet.execute({
+    "action": "send",
+    "chain": "solana",
+    "to": "接收地址",
+    "amount": 0.1
+})
+```
+
+了解更多：[查看完整文档](https://github.com/chriswangcq/ai-crypto-wallet)

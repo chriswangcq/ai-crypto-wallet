@@ -41,7 +41,7 @@ await wallet.execute({
 | **Bitcoin** | ✅ Live | BTC | Testnet3 / Mainnet |
 | **Ethereum** | ✅ Live | ETH, ERC-20 | Sepolia / Mainnet |
 | **Solana** | ✅ Live | SOL, SPL tokens | Devnet / Mainnet |
-| **TRON** | 🚧 Coming | TRX, TRC-20 | Nile / Mainnet |
+| **TRON** | ✅ Live | TRX, TRC-20 | Nile / Mainnet |
 
 ### 🤖 AI-Native Design
 - **JSON API** — No GUI, just programmatic control
@@ -236,7 +236,7 @@ Our vision:
 - [x] Bitcoin support (BTC)
 - [x] Ethereum support (ETH, ERC-20)
 - [x] Solana support (SOL, SPL tokens)
-- [ ] TRON support (TRX, TRC-20)
+- [x] TRON support (TRX, TRC-20)
 
 ### Phase 2: Advanced Features
 - [ ] Multi-sig wallets for AI committees
